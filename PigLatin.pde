@@ -1,3 +1,4 @@
+String[] Vowels = {"a", "e", "i", "o", "u"};
 public void setup() 
 {
 	String[] lines = loadStrings("words.txt");
@@ -11,8 +12,13 @@ public void draw()
 {
         //not used
 }
-public int findFirstVowel(String sWord)
-//precondition: sWord is a valid String of length greater than 0.
+public int findFirstVowel(String sWord) {
+if(sWord.length() > 0) {
+  for(int i = 0; i < sWord.length(); i++) {
+    for( int d = 0; d < Vowels.length(); d++) {
+    if((sWord.substring(i, i+1)).equals(Vowels[d])) {
+      return
+      
 //postcondition: returns the position of the first vowel in sWord.  If there are no vowels, returns -1
 {
 	return -1;
