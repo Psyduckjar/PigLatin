@@ -1,13 +1,56 @@
 String[] Vowels = {"a", "e", "i", "o", "u"};
+int lines;
 public void setup() 
 {
-  String[] lines = loadStrings("words.txt");
-  System.out.println("there are " + lines.length + " lines");
-  for (int i = 0; i < lines.length; i++) 
-  {
-    System.out.println(pigLatin(lines[i]));
+
+  String[] words = loadStrings("LowellHymn.txt");
+  String dude = join(words, " ");
+  println("NORMAL VERSION");
+  println(dude);
+  println("_____________________");
+  String[] bruh = split(dude, " ");
+
+
+  for (String damn : bruh) {
+    if (damn.length() > 0) {
+      if ((damn.substring(damn.length()-1).equals(","))) {
+        println(pigLatin(damn.substring(0, damn.length()-1)) + ",");
+      } else if ((damn.substring(damn.length()-1).equals("."))) 
+      {
+        println(pigLatin(damn.substring(0, damn.length()-1)) + ".");
+      } else { 
+        print(pigLatin(damn) + " ");
+      }
+    }
   }
 }
+
+
+
+
+
+
+
+
+/*
+  for (int d = 0; d < bruh.size(); d++) 
+ {
+ if(bruh.get(d).length() > 1) {
+ for(int i = 0; i < bruh.get(d).length(); i++) {
+ if(bruh.get(d).substring(i,i+1).equals("")) {
+ bruh.set(d,bruh.get(d).substring(0,i));
+ bruh.add(d+1,bruh.get(d).substring(i,bruh.get(d).length()));
+ println(bruh.get(d));
+ } else {
+ println(bruh.get(d));
+ }
+ } 
+ } else {
+ System.out.println(pigLatin(bruh.get(d)));
+ }
+ }
+ }*/
+
 public void draw()
 {
   //not used
@@ -42,8 +85,8 @@ public String pigLatin(String sWord)
   } else if (findFirstVowel(sWord) == 0) {
     return sWord + "way";
   } else if (findFirstVowel(sWord) > 0) {
-    return sWord.substring(findFirstVowel(sWord),sWord.length()) + sWord.substring(0,findFirstVowel(sWord)) + "ay";
+    return sWord.substring(findFirstVowel(sWord), sWord.length()) + sWord.substring(0, findFirstVowel(sWord)) + "ay";
   } else {
     return "error";
-}
+  }
 }
